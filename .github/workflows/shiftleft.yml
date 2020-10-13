@@ -60,12 +60,12 @@ jobs:
         Invoke-WebRequest -Uri 'https://cdn.shiftleft.io/download/sl-latest-windows-x64.zip' -OutFile sl.zip
         Expand-Archive -Path sl.zip -DestinationPath .
     - name: Validate Build Rules
-      run: .\sl check-analysis --app shiftleft-csharp-demo `
-      --branch "${{ github.head_ref || steps.extract_branch.outputs.branch }}" `
-      --report `
-      --github-pr-number=${{github.event.number}} `
-      --github-pr-user=${{ github.repository_owner }} `
-      --github-pr-repo=${{ github.event.repository.name }} `
+      run: .\sl check-analysis --app shiftleft-csharp-demo \\\`|
+      --branch "${{ github.head_ref || steps.extract_branch.outputs.branch }}" \\\`|
+      --report \\\`|
+      --github-pr-number=${{github.event.number}} \\\`|
+      --github-pr-user=${{ github.repository_owner }} \\\`|
+      --github-pr-repo=${{ github.event.repository.name }} \\\`|
       --github-token=${{ secrets.GITHUB_TOKEN }}
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
